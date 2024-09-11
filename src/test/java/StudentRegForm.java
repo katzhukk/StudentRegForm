@@ -32,15 +32,16 @@ public class StudentRegForm {
         String currentAddress = "Moscow, Pushkin street, 1";
         String State = "NCR";
         String city = "Delhi";
-        open("https://demoqa.com/automation-practice-form");    /*Открывает форму automation-practice-form*/
 
+        open("https://demoqa.com/automation-practice-form");    /*Открывает форму automation-practice-form*/
+        /*Заполнение формы студента:*/
         $("#firstName").setValue(firstName);    /*Вводит в форму firstName. Можно сократить: для id= - #, для класса "точка" */
         $("#lastName").setValue(lastName);    /*Вводит в форму lastName. Можно сократить: для id= - #, для класса "точка" */
         $("#userEmail").setValue(userEmail);    /*Вводит в форму Email*/
         $("#gender-radio-2").parent().click();    /*Выбор пола по клику*/
         $("#userNumber").setValue(userNumber);    /*Вводит в форму номер телефона */
-        $("#dateOfBirthInput").click();    /*Клик по Дате Рождения*/
 
+        $("#dateOfBirthInput").click();    /*Клик по Дате Рождения*/
         $(".react-datepicker__month-select").find("option[value='5']").click(); /*Выбирает июнь*/
         $(".react-datepicker__year-select").find("option[value='2000']").click();
         $(".react-datepicker__day--023").click();
@@ -54,7 +55,7 @@ public class StudentRegForm {
 
         $("#submit").click();    /*Клик по кнопке submit*/
 
-
+        /*Проверка параметров:*/
         $("#currentAddress").setValue(currentAddress);    /*Вводит в форму адрес*/
         $("#react-select-3-input").setValue(State).pressEnter();    /*Вводит в форму штат*/
         $("#react-select-4-input").setValue(city).pressEnter();    /*Вводит в форму город*/
