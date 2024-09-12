@@ -1,15 +1,15 @@
 import com.codeborne.selenide.Configuration;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
-import static java.sql.DriverManager.println;
 
 public class StudentRegForm {
 
     @BeforeAll
-    static void beforeAll(){/* Всегда пишется со static. Вызывается один перед всеми тестами в этом тестовом классе*/
+    static void beforeAll() {/* Всегда пишется со static. Вызывается один перед всеми тестами в этом тестовом классе*/
         Configuration.browserSize = "1920x1080";    /* Задаем разрешение браузера */
         Configuration.baseUrl = "https://demoqa.com";   /* Открывает основную страницу сайта */
         Configuration.pageLoadStrategy = "eager";   /* Не ждем, когда загрузится полностью страница, чтобы долго не ждать*/
@@ -51,10 +51,7 @@ public class StudentRegForm {
         $("#submit").click();    /*Клик по кнопке submit*/
 
         /*Проверка параметров:*/
-        $("#currentAddress").setValue(currentAddress);    /*Вводит в форму адрес*/
-        $("#react-select-3-input").setValue(State).pressEnter();    /*Вводит в форму штат*/
-        $("#react-select-4-input").setValue(city).pressEnter();    /*Вводит в форму город*/
-        $(".table-responsive").shouldHave(text(firstName+" "+lastName)); /*Проверяет имя и фамилию*/
+        $(".table-responsive").shouldHave(text(firstName + " " + lastName)); /*Проверяет имя и фамилию*/
         $(".table-responsive").shouldHave(text(userEmail)); /*Проверяет Email*/
         $(".table-responsive").shouldHave(text("Female")); /*Проверяет пол*/
         $(".table-responsive").shouldHave(text(userNumber)); /*Проверяет номер*/
@@ -63,8 +60,10 @@ public class StudentRegForm {
         $(".table-responsive").shouldHave(text("Music")); /*Проверяет предметы*/
         $(".table-responsive").shouldHave(text("StudentRegForm.jpg")); /*Проверяет картинку*/
         $(".table-responsive").shouldHave(text(currentAddress)); /*Проверяет адрес*/
-        $(".table-responsive").shouldHave(text(State+" "+city)); /*Проверяет штат и город*/
-
-        println("Test, StudentRegForm - StudentRegFormTest");
+        $(".table-responsive").shouldHave(text(State + " " + city)); /*Проверяет штат и город*/
+    }
+    @AfterAll
+    static void AfterAll() {/* Всегда пишется со static. Вызывается один после всеми тестов в этом тестовом классе*/
+        System.out.println("Test, StudentRegForm - StudentRegFormTest");
     }
 }
