@@ -7,22 +7,16 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class StudentRegForm {
 
-    static {
-        Configuration.pageLoadStrategy = "eager";
-    }
-
     @BeforeAll
     static void beforeAll(){/* Всегда пишется со static. Вызывается один перед всеми тестами в этом тестовом классе*/
         Configuration.browserSize = "1920x1080";    /* Задаем разрешение браузера */
         Configuration.baseUrl = "https://demoqa.com";   /* Открывает основную страницу сайта */
         Configuration.pageLoadStrategy = "eager";   /* Не ждем, когда загрузится полностью страница, чтобы долго не ждать*/
-        Configuration.holdBrowserOpen = true; /* не дает закрыть тесту браузер */
-        Configuration.timeout = 5000;   // Таймаут 5 сек; default 4000
+        //Configuration.holdBrowserOpen = true; /* не дает закрыть тесту браузер */
     }
 
     @Test
     void fillFormTest() {
-
         String firstName = "Kate";
         String lastName = "Zhukova";
         String userEmail = "kate@zhukova.ru";
@@ -33,7 +27,7 @@ public class StudentRegForm {
         String State = "NCR";
         String city = "Delhi";
 
-        open("https://demoqa.com/automation-practice-form");    /*Открывает форму automation-practice-form*/
+        open("/automation-practice-form");    /*Открывает форму automation-practice-form*/
         /*Заполнение формы студента:*/
         $("#firstName").setValue(firstName);    /*Вводит в форму firstName. Можно сократить: для id= - #, для класса "точка" */
         $("#lastName").setValue(lastName);    /*Вводит в форму lastName. Можно сократить: для id= - #, для класса "точка" */
