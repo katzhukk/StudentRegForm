@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
+import static java.sql.DriverManager.println;
 
 public class StudentRegForm {
 
@@ -63,5 +64,7 @@ public class StudentRegForm {
         $(".table-responsive").shouldHave(text("StudentRegForm.jpg")); /*Проверяет картинку*/
         $(".table-responsive").shouldHave(text(currentAddress)); /*Проверяет адрес*/
         $(".table-responsive").shouldHave(text(State+" "+city)); /*Проверяет штат и город*/
+
+        println("Test, StudentRegForm - StudentRegFormTest");
     }
 }
