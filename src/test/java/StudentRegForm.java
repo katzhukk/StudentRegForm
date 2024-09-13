@@ -1,4 +1,5 @@
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.WebDriverRunner;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -16,6 +17,11 @@ public class StudentRegForm {
         //Configuration.holdBrowserOpen = true;         /* Не дает закрыть тесту браузер. Нужно только для отладки */
     }
 
+    @AfterAll
+    static void AfterAll() {/* Всегда пишется со static. Вызывается один после всеми тестов в этом тестовом классе*/
+        WebDriverRunner.closeWebDriver();
+    }
+
     @Test
     void fillFormTest() {
         String firstName = "Kate";
@@ -25,7 +31,7 @@ public class StudentRegForm {
         String dateOfBirthInput = "23 June,2000";
         String subjectsInput = "Math";
         String currentAddress = "Moscow, Pushkin street, 1";
-        String State = "NCR";
+        String state = "NCR";
         String city = "Delhi";
 
         open("/automation-practice-form"); /*Открывает форму automation-practice-form*/
@@ -45,7 +51,7 @@ public class StudentRegForm {
         $("#hobbies-checkbox-3").parent().click();                   /*Выбор хобби Music по клику*/
         $("#uploadPicture").uploadFromClasspath("images/StudentRegForm.jpg");     /*Выбор картинку по клику*/
         $("#currentAddress").setValue(currentAddress);                /*Вводит в форму предметы*/
-        $("#react-select-3-input").setValue(State).pressEnter();      /*Вводит в форму штат*/
+        $("#react-select-3-input").setValue(state).pressEnter();      /*Вводит в форму штат*/
         $("#react-select-4-input").setValue(city).pressEnter();       /*Вводит в форму город*/
 
         $("#submit").click();    /*Клик по кнопке submit*/
@@ -60,10 +66,6 @@ public class StudentRegForm {
         $(".table-responsive").shouldHave(text("Music"));                   /*Проверяет предметы*/
         $(".table-responsive").shouldHave(text("StudentRegForm.jpg"));      /*Проверяет картинку*/
         $(".table-responsive").shouldHave(text(currentAddress));            /*Проверяет адрес*/
-        $(".table-responsive").shouldHave(text(State + " " + city));        /*Проверяет штат и город*/
-    }
-    @AfterAll
-    static void AfterAll() {/* Всегда пишется со static. Вызывается один после всеми тестов в этом тестовом классе*/
-        System.out.println("Test, StudentRegForm - StudentRegFormTest");
+        $(".table-responsive").shouldHave(text(state + " " + city));        /*Проверяет штат и город*/
     }
 }
