@@ -18,7 +18,7 @@ public class StudentRegForm {
     }
 
     @AfterAll
-    static void AfterAll() {/* Всегда пишется со static. Вызывается один после всеми тестов в этом тестовом классе*/
+    static void afterAll() {/* Всегда пишется со static. Вызывается один после всеми тестов в этом тестовом классе*/
         WebDriverRunner.closeWebDriver();
     }
 
